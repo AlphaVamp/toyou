@@ -1,0 +1,34 @@
+<h1>Shri Ram Books</h1>
+Enter Name:<input type="text" #name /><br />
+Enter ISBN:<input type="text" #isbn /><br />
+Enter Price:<input type="number" #price /><br />
+Enter Author:<input type="text" #author /><br />
+<button (click)="addBook(name.value, isbn.value, price.value, author.value)">
+  Add Book
+</button>
+<br /><br />
+<table
+  *ngIf="books.length > 0"
+  style="display: flex; justify-content: center; align-items: center"
+>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Name</th>
+      <th>ISBN</th>
+      <th>Price</th>
+      <th>Author</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ book.name }}</td>
+      <td>{{ book.ISBN }}</td>
+      <td>{{ book.price }}</td>
+      <td>{{ book.author }}</td>
+      <td><button (click)="deleteBook(book.name)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
